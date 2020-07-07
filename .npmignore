@@ -1,0 +1,11 @@
+node_modules/
+src/
+lib/
+bin/
+coverage/
+webpack.config.js
+.babelrc
+.eslintrc
+.git
+.idea
+.DS_Store
