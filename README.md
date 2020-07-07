@@ -1,74 +1,62 @@
-<p align="center">
-<a href="https://www.npmjs.com/package/owleague" target="_blank" rel="noopener">
-  <img src="https://user-images.githubusercontent.com/22821657/45630506-d4895280-ba66-11e8-99c3-b5ea2b8e5cff.png" alt="" width="225px">
-</a>
-</p>
 
-<p align=center>
-<a target="_blank" href="https://travis-ci.com/LukeAlSaba/OWLeague" title="Build Status"><img src="https://travis-ci.com/LukeAlSaba/OWLeague.svg?branch=master"></a>
-<a target="_blank" href="https://npmjs.org/package/owleague" title="NPM version"><img src="https://img.shields.io/npm/v/owleague.svg"></a>
-<a target="_blank" href="http://nodejs.org/download/" title="Node version"><img src="https://img.shields.io/badge/node.js-%3E=_6.0-green.svg"></a>
-<a target="_blank" href="https://opensource.org/licenses/MIT" title="License: MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
-</p>
+# League of Legends Esports CLI
 
 <p>
-Check out the current <a href="https://overwatchleague.com/en-us/" target="_blank" rel="noopener">Overwatch League</a> standings and the current weeks matches all in your console!
+Check out the current weeks League of Legends matches from your console.  
+Best CLI tool for those who are both LoL fans and Software Engineers.
 
-This CLI tool was made for those who are both OWL fans and Software Engineers.
-
-All data comes from the <a href="https://api.overwatchleague.com/" target="_blank" rel="noopener">Overwatch League API</a>.
+All data comes from [PandaScore](https://pandascore.co/) APIs.
 </p>
 
 ## Install
 
 <p>
-In order to use the Overwatch League CLI, make sure that you have Node version 6.0.0 or higher.
+In order to use League of Legends CLI, make sure that you have [Node](https://nodejs.org/) version 6.0.0 or higher.
 </p>
 
 ```
-$ npm install -g owleague
+$ npm install -g leagueoflegends
 ```
 
 ## Usage
 
-`owleague` provides two main commands. 
+`leagueoflegends` provides one main command. 
 
-  - [`matches` or `m`](#game)
-  - [`standings` or `s`](#game)
+  - `matches` or `m`
 
-## Matches
-
-<p>
-Get a list of this weeks matches for the Overwatch League.
-</p>
-
-```
-$ owleague matches
-```
-<a href="https://www.npmjs.com/package/owleague" target="_blank" rel="noopener">
-  <img src="https://user-images.githubusercontent.com/22821657/59152320-7a268c80-8a0f-11e9-9964-19a70f2191a1.png" alt="owleague matches (example)" width="400px">
-</a>
-
-## Standings
+### Matches
 
 <p>
-Get the current Overwatch League standings.
+Get a list of this weeks matches for any of the 5 premier League of Legends leagues.
 </p>
 
-```
-$ owleague standings
-```
-<a href="https://www.npmjs.com/package/owleague" target="_blank" rel="noopener">
-  <img src="https://user-images.githubusercontent.com/22821657/59152321-7dba1380-8a0f-11e9-807e-191b9e9ff6c7.png" alt="owleague standings (example)" width="400px">
-</a>
+#### Options
 
-## Inspired by:
-
-  - <a href="https://github.com/xxhomey19/nba-go" target="_blank" rel="noopener">nba-go</a>
-  
-## License
-  
-  MIT
-<p align="center">
-<a href="https://al-saba.com/" target="_blank" rel="noopener">Portfolio</a>
+<p>
+Currently you can view the current weeks matches for the 5 premier LoL leagues.
 </p>
+
+#### Leagues
+
+  - North America LoL Championship Series (NA LCS)  
+    - `--na` or `-n`
+  - Europe LoL Championship Series (EU LCS)
+    - `--eu` or `-e`
+  - LoL Champions Korea (LCK)
+    - `--lck` or `-k`
+  - LoL Pro League (LPL)
+    - `--lpl` or `-p`
+  - LoL Masters Series (LMS)
+    - `--lms` or `-m`
+
+#### Example
+
+```
+$ leagueoflegends matches --na
+```
+
+### Inspired by:
+
+  - [nba-go](https://github.com/xxhomey19/nba-go)
+  
+  
