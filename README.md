@@ -1,8 +1,6 @@
-<p align=center>
-
-# League of Legends Esports CLI
-
-</p>
+<h1 align=center>
+League of Legends Esports CLI
+</h1>
 
 <p align=center>
 <a target="_blank" href="https://travis-ci.com/LukeAlSaba/OWLeague" title="Build Status"><img src="https://travis-ci.com/LukeAlSaba/OWLeague.svg?branch=master"></a>
