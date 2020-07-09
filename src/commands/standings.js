@@ -3,14 +3,9 @@ const ora = require('ora');
 const {left, center} = require('wide-align');
 const fetch = require('node-fetch');
 
-const TEAM_WIDTH = 33;
+const TEAM_WIDTH = 36;
 const TEAM_RANK_W = 8;
-const DIV_WIDTH = 8;
-const W_WIDTH = 8;
-const L_WIDTH = 8;
-const RECORD_WIDTH = 12;
-const DIFF_WIDTH = 8;
-const TOTAL_WIDTH = 82;
+const RECORD_WIDTH = 11;
 
 const getStandings = (team, record) => `${team} ${record}`;
 
@@ -38,7 +33,7 @@ module.exports = {
                 if (data.length > 0) {
                     console.log('');
                     console.log(
-                        chalk.hex('#fff').bgHex('#1e1e1e')(`${center('TEAM', TEAM_WIDTH)} ${center('Record W-L', RECORD_WIDTH)}`)
+                        chalk.hex('#fff').bgHex('#1e1e1e')(`${center('TEAM', TEAM_WIDTH)} ${center('RECORD', RECORD_WIDTH)}`)
                     );
                     console.log('');
                     chalk.hex('#4290a2')

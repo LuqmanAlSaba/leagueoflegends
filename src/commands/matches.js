@@ -8,7 +8,7 @@ const NUM_DAY = {day: "numeric"};
 const DAY = {weekday: "long"};
 const TIME = {hour: "2-digit", minute: "2-digit"};
 
-const TEAM_WIDTH = 30;
+const TEAM_WIDTH = 28;
 const STATUS_WIDTH = 22;
 const TABLE_WIDTH = TEAM_WIDTH + STATUS_WIDTH + TEAM_WIDTH;
 
@@ -37,24 +37,6 @@ function swap(array, i, j) {
     newArray[j] = temp;
 }
 
-function bubbleSort(array) {
-    let swapped;
-    do {
-        swapped = false;
-        for (let i = 0; i < array.length - 1; i += 1) {
-            if (
-                array[i].startDate !== undefined &&
-                array[i + 1].startDate !== undefined &&
-                array[i].startDate > array[i + 1].startDate
-            ) {
-                swap(array, i, i + 1);
-                swapped = true;
-            }
-        }
-    } while (swapped);
-    return array;
-}
-
 function getDateSuffix(d) {
     if (d > 3 && d < 21) return "th";
     switch (d % 10) {
@@ -77,16 +59,6 @@ function getMatchResult(score1, score2, status) {
         return "Team 2";
     }
     return "";
-}
-
-function getTime(date) {
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
-    var ampm = hours >= 12 ? 'pm' : 'am';
-    hours = hours % 12;
-    hours = hours ? hours : 12; // the hour '0' should be '12'
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    return hours + ':' + minutes + ' ' + ampm;
 }
 
 module.exports = {
