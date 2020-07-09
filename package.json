@@ -12,12 +12,11 @@
   "bugs": {
     "url": "https://github.com/lukealsaba/leagueoflegends/issues"
   },
-  "version": "1.0.0",
+  "version": "2.5.0",
   "main": "lib/cli.js",
   "bin": {
     "leagueoflegends": "lib/cli.js"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "scripts": {
     "build": "npm run clean && webpack --config webpack.config.js -p",
     "clean": "rimraf lib packed",
@@ -124,5 +123,8 @@
       "node8-linux",
       "node8-win"
     ]
+  },
+  "directories": {
+    "lib": "lib"
   }
 }

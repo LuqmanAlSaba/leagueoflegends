@@ -14,7 +14,7 @@ program
     .option('-e, --lec', 'Show this weeks LEC schedule')
     .option('-k, --lck', 'Show this weeks LCK schedule')
     .option('-p, --lpl', 'Show this weeks LPL schedule')
-    .option('-m, --lcsacademy', 'Show this weeks LCS-Academy schedule')
+    .option('-a, --lcsacademy', 'Show this weeks LCS-Academy schedule')
     .on('--help', () => {
         console.log('\n  See this weeks matches specific LoL league!\n');
         console.log('  Example:\n');
@@ -37,7 +37,7 @@ program
     .option('-e, --lec', 'Show this weeks LEC standings')
     .option('-k, --lck', 'Show this weeks LCK standings')
     .option('-p, --lpl', 'Show this weeks LPL standings')
-    .option('-la, --lcsacademy', 'Show this weeks LCS-Academy standings')
+    .option('-a, --lcsacademy', 'Show this weeks LCS-Academy standings')
     .on('--help', () => {
         console.log('\n  See the current standings for a specific LoL league!\n');
         console.log('  Example:\n');
