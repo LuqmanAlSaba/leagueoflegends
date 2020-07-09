@@ -30,13 +30,6 @@ const getMatch = (match, team1, team2, result1, result2, time, status) => {
     return `${right(team1, TEAM_WIDTH) + center(statusText, STATUS_WIDTH) + left(team2, TEAM_WIDTH)}\n`;
 };
 
-function swap(array, i, j) {
-    const newArray = array;
-    const temp = newArray[i];
-    newArray[i] = newArray[j];
-    newArray[j] = temp;
-}
-
 function getDateSuffix(d) {
     if (d > 3 && d < 21) return "th";
     switch (d % 10) {
@@ -91,10 +84,6 @@ module.exports = {
                     for (let i = 0; i < schedule.length; i += 1) {
 
                         const matchStartDate = schedule[i].matchID;
-                        // const match = schedule[i].matches[j];
-                        // let date = new Date(parseInt(matchStartDate));
-                        // let strTime = getTime(date)
-                        // console.log(strTime);
 
                         const match = {
                             // result: getMatchResult(team1.score, team2.score, data[i].time),
@@ -138,29 +127,6 @@ module.exports = {
                                 match.status
                             )
                         );
-
-                        /*
-                        if (match.weekday !== currentDay) {
-                            const today = new Date().toLocaleString("en-US", DATE);
-                            const currentDate = match.date;
-                            currentDay = match.weekday;
-
-                            if (currentDate === today) {
-                                console.log(
-                                    `${chalk.hex("#fff").bgHex("#1e1e1e")(
-                                        `${center("Today", TABLE_WIDTH)}`
-                                    )}\n`
-                                );
-                            } else {
-                                const date = match.date + getDateSuffix(match.day);
-                                console.log(
-                                    `${chalk.hex("#fff").bgHex("#1e1e1e")(
-                                        `${center(date, TABLE_WIDTH)}`
-                                    )}\n`
-                                );
-                            }
-                        }
-                      */
                     }
                 } else {
                     spinner.stop();
