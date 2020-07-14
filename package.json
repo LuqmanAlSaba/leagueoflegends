@@ -38,7 +38,6 @@
     "commander": "^2.20.0",
     "node-fetch": "^2.6.0",
     "ora": "^3.4.0",
-    "overwatchleague": "^2.2.1",
     "path": "^0.12.7",
     "wide-align": "^1.1.3"
   },
@@ -78,16 +77,16 @@
   },
   "keywords": [
     "leagueoflegends",
-    "lcs",
-    "lec",
-    "lck",
-    "lpl",
-    "lcs-academy",
     "cli",
     "esports",
     "riot",
     "games",
-    "lol"
+    "lol",
+    "lcs",
+    "lec",
+    "lck",
+    "lpl",
+    "lcs-academy"
   ],
   "engines": {
     "node": ">=6.0.0"
