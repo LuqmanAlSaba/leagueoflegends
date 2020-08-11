@@ -1,6 +1,6 @@
 <p align="center">
 <a href="https://www.npmjs.com/package/owleague" target="_blank" rel="noopener">
-  <img src="https://user-images.githubusercontent.com/22821657/89849037-a844b680-db55-11ea-83bd-66918d19ba92.png" alt="" width="350px">
+  <img src="https://user-images.githubusercontent.com/22821657/89957167-bc93bc80-dc04-11ea-8497-153d6d1b95c4.png" alt="" width="350px">
 </a>
 </p>
 
