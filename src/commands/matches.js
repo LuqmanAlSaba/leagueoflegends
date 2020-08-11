@@ -8,17 +8,22 @@ const NUM_DAY = {day: "numeric"};
 const DAY = {weekday: "long"};
 const TIME = {hour: "2-digit", minute: "2-digit"};
 
-const TEAM_WIDTH = 28;
+const TEAM_WIDTH = 23;
 const STATUS_WIDTH = 22;
 const TABLE_WIDTH = TEAM_WIDTH + STATUS_WIDTH + TEAM_WIDTH;
-
-const getMatch = (match, team1, team2, result1, result2, time, status) => {
-    let statusText = result1 + chalk.hex("#e2e2e2")("   vs   ") + result2;
-    if (status === "NOT STARTED") {
-        statusText = chalk.hex("#eeeeee").bold.bgHex("#666666")(
-            `  ${right(time, 8)}  `
+chalk.hex("#eeeeee").bold.bgHex("#666666")
+const getMatch = (league, match,) => {
+    let statusText = `  ${center(chalk.hex("#eeeeee").bold.bgHex("#666666").inverse(match.team1.score + "  vs  " + match.team1.score), 8)}  `;
+    // let statusText = chalk.hex("#eeeeee").bold.bgHex("#666666").inverse("    " + result1 + " - " + result2 + "    ");
+    let team1Name = ((match.team1.name).length >= 18 || league === "lcs-academy") ? match.team1.abbreviatedName : match.team1.name,
+        team2Name = ((match.team2.name).length >= 18 || league === "lcs-academy") ? match.team2.abbreviatedName : match.team2.name;
+    let team1 = chalk.bgHex(match.team1.color).whiteBright.bold(center(team1Name, team1Name.length + 2)),
+        team2 = chalk.bgHex(match.team2.color).whiteBright.bold(center(team2Name, team2Name.length + 2));
+    if (match.status === "NOT STARTED") {
+        statusText = chalk.hex("#eeeeee").bold.bgHex("#666666").inverse(
+            `  ${right(match.time, 8)}  `
         );
-    } else if (status === "LIVE") {
+    } else if (match.status === "LIVE") {
         statusText = chalk.hex("#fff")(chalk.bgHex("#e50e47").bold("    LIVE    "));
     }
     let star = chalk.hex("#ffd45a")(" ⭑ ");
@@ -67,7 +72,7 @@ module.exports = {
                     spinner.stop();
                     console.log(
                         `\n${center(
-                            chalk.hex("#fff")(league.toUpperCase()),
+                            league.toUpperCase(),
                             TABLE_WIDTH
                         )}\n`
                     );
@@ -96,13 +101,13 @@ module.exports = {
                             team2: schedule[i].team2
                         };
 
-                        if (match.date === today && currentDate != match.date) {
+                        if (match.date === today && currentDate !== match.date) {
                             console.log(
                                 `${chalk.hex("#fff").bgHex("#1e1e1e")(
                                     `${center("Today", TABLE_WIDTH)}`
                                 )}\n`
                             );
-                        } else if(currentDate != match.date){
+                        } else if (currentDate !== match.date) {
                             const date = match.date + getDateSuffix(match.day);
                             console.log(
                                 `${chalk.hex("#fff").bgHex("#1e1e1e")(
@@ -111,21 +116,8 @@ module.exports = {
                             );
                         }
                         currentDate = match.date;
-
                         console.log(
-                            getMatch(
-                                match,
-                                chalk.bgHex(match.team1.color).whiteBright.bold(match.team1.name),
-                                chalk.bgHex(match.team2.color).whiteBright.bold(match.team2.name),
-                                chalk
-                                    .hex(match.team1.score > match.team2.score ? "#fff" : "#a1a1a1")
-                                    .bold(match.team1.score),
-                                chalk
-                                    .hex(match.team2.score > match.team1.score ? "#fff" : "#a1a1a1")
-                                    .bold(match.team2.score),
-                                match.time,
-                                match.status
-                            )
+                            getMatch(league, match)
                         );
                     }
                 } else {
