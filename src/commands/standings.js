@@ -3,7 +3,7 @@ const ora = require('ora');
 const {left, center} = require('wide-align');
 const fetch = require('node-fetch');
 
-const TEAM_WIDTH = 19;
+const TEAM_WIDTH = 21;
 const TEAM_RANK_W = 8;
 const TOTAL = TEAM_WIDTH + TEAM_RANK_W;
 const RECORD_WIDTH = 14;
@@ -40,7 +40,7 @@ module.exports = {
                     chalk.hex('#4290a2')
                     for (let i = 0; i < data.length; i += 1) {
                         const team = {
-                            name: ((data[i].name).length >= 18 || league === "lcs-academy") ? data[i].abbreviatedName : data[i].name,
+                            name: ((data[i].name).length >= 20 || league === "lcs-academy") ? data[i].abbreviatedName : data[i].name,
                             color: data[i].color,
                             rank: data[i].ranking,
                             record: data[i].record,
