@@ -1,6 +1,8 @@
-<h1 align=center>
-League of Legends Esports CLI
-</h1>
+<p align="center">
+<a href="https://www.npmjs.com/package/owleague" target="_blank" rel="noopener">
+  <img src="https://user-images.githubusercontent.com/22821657/89849037-a844b680-db55-11ea-83bd-66918d19ba92.png" alt="" width="225px">
+</a>
+</p>
 
 <p align=center>
 <a target="_blank" href="https://travis-ci.com/LukeAlSaba/OWLeague" title="Build Status"><img src="https://travis-ci.com/LukeAlSaba/OWLeague.svg?branch=master"></a>
