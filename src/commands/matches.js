@@ -13,7 +13,7 @@ const STATUS_WIDTH = 22;
 const TABLE_WIDTH = TEAM_WIDTH + STATUS_WIDTH + TEAM_WIDTH;
 chalk.hex("#eeeeee").bold.bgHex("#666666")
 const getMatch = (league, match,) => {
-    let statusText = `  ${center(chalk.hex("#eeeeee").bold.bgHex("#666666").inverse(match.team1.score + "  vs  " + match.team1.score), 8)}  `;
+    let statusText = `  ${center(chalk.hex("#eeeeee").bold.bgHex("#666666").inverse("  " + match.team1.score + "  vs  " + match.team2.score + "  "), 8)}  `;
     // let statusText = chalk.hex("#eeeeee").bold.bgHex("#666666").inverse("    " + result1 + " - " + result2 + "    ");
     let team1Name = ((match.team1.name).length >= 20 || league === "lcs-academy") ? match.team1.abbreviatedName : match.team1.name,
         team2Name = ((match.team2.name).length >= 20 || league === "lcs-academy") ? match.team2.abbreviatedName : match.team2.name;
@@ -81,11 +81,6 @@ module.exports = {
                     let currentDay = new Date(schedule[0].matchID).toLocaleString("en-US", NUM_DAY);
                     const today = new Date().toLocaleString("en-US", DATE);
                     const date = currentDate + getDateSuffix(currentDay);
-                    console.log(
-                        `${chalk.hex("#fff").bgHex("#1e1e1e")(
-                            `${center(date, TABLE_WIDTH)}`
-                        )}\n`
-                    );
                     for (let i = 0; i < schedule.length; i += 1) {
 
                         const matchStartDate = schedule[i].matchID;
@@ -101,13 +96,13 @@ module.exports = {
                             team2: schedule[i].team2
                         };
 
-                        if (match.date === today && currentDate !== match.date) {
+                        if (today === match.date) {
                             console.log(
                                 `${chalk.hex("#fff").bgHex("#1e1e1e")(
                                     `${center("Today", TABLE_WIDTH)}`
                                 )}\n`
                             );
-                        } else if (currentDate !== match.date) {
+                        } else if (currentDate !== match.date || i === 0) {
                             const date = match.date + getDateSuffix(match.day);
                             console.log(
                                 `${chalk.hex("#fff").bgHex("#1e1e1e")(
