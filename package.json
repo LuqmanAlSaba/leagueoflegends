@@ -72,12 +72,11 @@
     "webpack-node-externals": "^1.7.2"
   },
   "keywords": [
-    "leagueoflegends",
-    "cli",
-    "esports",
-    "riot",
-    "games",
+    "league of legends",
     "lol",
+    "riot games",
+    "esports",
+    "cli",
     "lcs",
     "lec",
     "lck",
