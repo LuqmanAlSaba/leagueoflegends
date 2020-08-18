@@ -31,4 +31,3 @@ test('returns the match result based on the match score', () => {
 test('returns the match result based on the match score', () => {
   expect(getMatchResult(3, 2, 'IN_PROGRESS')).toBe('');
 });
-
