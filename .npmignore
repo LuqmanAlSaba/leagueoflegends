@@ -9,3 +9,4 @@ webpack.config.js
 .git
 .idea
 .DS_Store
+.travis.yml
