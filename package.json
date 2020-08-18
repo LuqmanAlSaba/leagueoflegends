@@ -34,7 +34,7 @@
     "@babel/runtime": "^7.11.2",
     "async-to-gen": "^1.4.0",
     "chalk": "^2.4.2",
-    "commander": "^6.0.0",
+    "commander": "^2.20.3",
     "node-fetch": "^2.6.0",
     "ora": "^3.4.0",
     "wide-align": "^1.1.3"
