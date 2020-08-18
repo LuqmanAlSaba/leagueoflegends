@@ -1,11 +1,11 @@
 <p align="center">
-<a href="https://www.npmjs.com/package/owleague" target="_blank" rel="noopener">
+<a href="https://www.npmjs.com/package/leagueoflegends" target="_blank" rel="noopener">
   <img src="https://user-images.githubusercontent.com/22821657/89957923-ae46a000-dc06-11ea-9417-b89e69b0e785.png" alt="League of Legends Command-Line Interface" width="300px">
 </a>
 </p>
 
 <p align=center>
-<a target="_blank" href="https://travis-ci.com/LukeAlSaba/OWLeague" title="Build Status"><img src="https://travis-ci.com/LukeAlSaba/OWLeague.svg?branch=master"></a>
+<a target="_blank" href="https://travis-ci.com/LukeAlSaba/leagueoflegends" title="Build Status"><img src="https://travis-ci.com/LukeAlSaba/leagueoflegends.svg?branch=master"></a>
 <a target="_blank" href="https://npmjs.org/package/leagueoflegends" title="NPM version"><img src="https://img.shields.io/npm/v/leagueoflegends.svg"></a>
 <a target="_blank" href="http://nodejs.org/download/" title="Node version"><img src="https://img.shields.io/badge/node.js-%3E=_6.0-green.svg"></a>
 <a target="_blank" href="https://opensource.org/licenses/MIT" title="License: MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
