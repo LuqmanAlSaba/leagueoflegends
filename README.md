@@ -1,6 +1,6 @@
 <p align="center">
 <a href="https://www.npmjs.com/package/leagueoflegends" target="_blank" rel="noopener">
-  <img src="https://user-images.githubusercontent.com/22821657/89957923-ae46a000-dc06-11ea-9417-b89e69b0e785.png" alt="League of Legends Command-Line Interface" width="300px">
+  <img src="https://user-images.githubusercontent.com/22821657/90683501-a1443500-e234-11ea-93fc-f12f2b658911.png" alt="League of Legends Command-Line Interface" width="400px">
 </a>
 </p>
 
