@@ -48,11 +48,16 @@ function getDateSuffix(d) {
 }
 
 function getDate(match, currentDate, i) {
-    let today = new Date().toLocaleString("en-US", DATE);
-    let yesterday = new Date();
-    let tomorrow = new Date();
+    let today = new Date();
+    let yesterday = new Date(today);
+    let tomorrow = new Date(today);
+
     yesterday.setDate(yesterday.getDate() - 1);
     tomorrow.setDate(tomorrow.getDate() + 1);
+
+    today = today.toLocaleString("en-US", DATE);
+    yesterday = yesterday.toLocaleString("en-US", DATE);
+    tomorrow = tomorrow.toLocaleString("en-US", DATE);
     let dateStr = "";
 
     if (today === match.date) {
