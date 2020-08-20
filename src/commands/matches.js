@@ -23,7 +23,7 @@ const getMatch = (league, match) => {
     if (match.status === "NOT STARTED") {
         statusText = chalk.hex("#eeeeee").bold.bgHex("#666666").inverse(`  ${right(match.time, 8)}  `);
     } else if (match.status === "LIVE") {
-        statusText = chalk.hex("#fff")(chalk.bgHex("#e50e47").bold(center("LIVE"), 12));
+        statusText = chalk.hex("#fff")(chalk.bgHex("#e50e47").bold(center("LIVE", 12)));
     } else if (match.status === "CONCLUDED") {
         let star = chalk.hex("#ffd45a")(" ⭑ ");
         team1 = (match.team1.score > match.team2.score) ? star + team1 : team1;
@@ -60,14 +60,16 @@ function getDate(match, currentDate, i) {
     tomorrow = tomorrow.toLocaleString("en-US", DATE);
     let dateStr = "";
 
-    if (today === match.date) {
-        dateStr = "Today";
-    } else if (yesterday === match.date) {
-        dateStr = "Yesterday";
-    } else if (tomorrow === match.date) {
-        dateStr = "Tomorrow";
-    } else if (currentDate !== match.date || i === 0) {
-        dateStr = match.date + getDateSuffix(match.day);
+    if (currentDate !== match.date || i === 0) {
+        if (today === match.date) {
+            dateStr = "Today";
+        } else if (yesterday === match.date) {
+            dateStr = "Yesterday";
+        } else if (tomorrow === match.date) {
+            dateStr = "Tomorrow";
+        } else if (currentDate !== match.date) {
+            dateStr = match.date + getDateSuffix(match.day);
+        }
     }
     return dateStr;
 }
@@ -86,13 +88,17 @@ module.exports = {
     matches(league) {
         const spinner = ora("Loading matches").start();
         const url = `https://lolesports.s3.us-east-2.amazonaws.com/${league}/schedule`;
+
         fetch(url)
+            .catch(() => {
+                console.error("\nHost is inaccessible -- are you offline?");
+                process.exit(1);
+            })
             .then(res => res.json())
             .then(json => {
                 const schedule = json.schedule;
-
+                spinner.stop();
                 if (schedule.length > 0) {
-                    spinner.stop();
                     console.log(`\n${center(league.toUpperCase(), TABLE_WIDTH)}\n`);
 
                     let currentDate = new Date(schedule[0].matchID).toLocaleString("en-US", DATE);
@@ -122,7 +128,6 @@ module.exports = {
                         console.log(getMatch(league, match));
                     }
                 } else {
-                    spinner.stop();
                     console.log("\n  There are no " + league.toUpperCase() + " matches this week.\n");
                 }
             });
