@@ -9,6 +9,7 @@
 <a target="_blank" href="https://npmjs.org/package/leagueoflegends" title="NPM version"><img src="https://img.shields.io/npm/v/leagueoflegends.svg"></a>
 <a target="_blank" href="http://nodejs.org/download/" title="Node version"><img src="https://img.shields.io/badge/node.js-%3E=_6.0-green.svg"></a>
 <a target="_blank" href="https://opensource.org/licenses/MIT" title="License: MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
+<a target="_blank" href="https://packagephobia.com/result?p=leagueoflegends" title="Install Size"><img src="https://packagephobia.com/badge?p=leagueoflegends@3.4.2"></a>
 </p>
 
 <p>
