@@ -31,7 +31,7 @@
     "testonly:watch": "jest --watch"
   },
   "dependencies": {
-    "chalk": "^4.1.0",
+    "chalk": "^2.4.1",
     "commander": "^6.0.0",
     "node-fetch": "^2.6.0",
     "ora": "^3.4.0",
