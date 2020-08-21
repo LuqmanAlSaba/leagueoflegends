@@ -4,7 +4,7 @@
   "description": "League of Legends CLI.",
   "license": "MIT",
   "author": "Luke Al-Saba",
-  "homepage": "https://al-saba.com/",
+  "homepage": "https://al-saba.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lukealsaba/leagueoflegends.git"
