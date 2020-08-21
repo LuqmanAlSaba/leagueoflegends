@@ -4,6 +4,7 @@ const {left, right, center} = require("wide-align");
 const fetch = require('node-fetch');
 
 const DATE = {weekday: "long", month: "long", day: "numeric"};
+const shortDate = {month: "long", day: "numeric"};
 const NUM_DAY = {day: "numeric"};
 const DAY = {weekday: "long"};
 const TIME = {hour: "2-digit", minute: "2-digit"};
@@ -55,20 +56,17 @@ function getDate(match, currentDate, i) {
     yesterday.setDate(yesterday.getDate() - 1);
     tomorrow.setDate(tomorrow.getDate() + 1);
 
-    today = today.toLocaleString("en-US", DATE);
-    yesterday = yesterday.toLocaleString("en-US", DATE);
-    tomorrow = tomorrow.toLocaleString("en-US", DATE);
     let dateStr = "";
 
     if (currentDate !== match.date || i === 0) {
-        if (today === match.date) {
-            dateStr = "Today";
-        } else if (yesterday === match.date) {
-            dateStr = "Yesterday";
-        } else if (tomorrow === match.date) {
-            dateStr = "Tomorrow";
+        if (today.toLocaleString("en-US", DATE) === match.date) {
+            dateStr = "Today, " + today.toLocaleString("en-US", shortDate);
+        } else if (yesterday.toLocaleString("en-US", DATE) === match.date) {
+            dateStr = "Yesterday, " + yesterday.toLocaleString("en-US", shortDate);
+        } else if (tomorrow.toLocaleString("en-US", DATE) === match.date) {
+            dateStr = "Tomorrow, " + tomorrow.toLocaleString("en-US", shortDate);
         } else if (currentDate !== match.date) {
-            dateStr = match.date + getDateSuffix(match.day);
+            dateStr = match.date;
         }
     }
     return dateStr;
