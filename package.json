@@ -1,10 +1,10 @@
 {
   "name": "leagueoflegends",
+  "version": "3.4.2",
   "description": "League of Legends CLI.",
   "license": "MIT",
   "author": "Luke Al-Saba",
-  "url": "https://al-saba.com/",
-  "homepage": "https://github.com/lukealsaba/leagueoflegends",
+  "homepage": "https://al-saba.com/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lukealsaba/leagueoflegends.git"
@@ -12,23 +12,9 @@
   "bugs": {
     "url": "https://github.com/lukealsaba/leagueoflegends/issues"
   },
-  "version": "3.4.2",
   "main": "lib/cli.js",
   "bin": {
     "leagueoflegends": "lib/cli.js"
-  },
-  "scripts": {
-    "build": "npm run clean && webpack --config webpack.config.js -p",
-    "clean": "rimraf lib packed",
-    "dev": "webpack --config webpack.config.js -d -w",
-    "lint": "eslint src",
-    "lint:fix": "npm run lint -- --fix",
-    "pack": "pkg . --out-path packed",
-    "prepublishOnly": "npm run build && echo '#!/usr/bin/env node' | cat - lib/cli.js > temp && mv temp lib/cli.js",
-    "test": "npm run lint:fix && npm run testonly:cov",
-    "testonly": "NODE_ENV=test jest",
-    "testonly:cov": "jest --coverage --runInBand --forceExit --no-cache",
-    "testonly:watch": "jest --watch"
   },
   "dependencies": {
     "chalk": "^2.4.1",
@@ -118,5 +104,18 @@
   },
   "directories": {
     "lib": "lib"
+  },
+  "scripts": {
+    "build": "npm run clean && webpack --config webpack.config.js -p",
+    "clean": "rimraf lib packed",
+    "dev": "webpack --config webpack.config.js -d -w",
+    "lint": "eslint src",
+    "lint:fix": "npm run lint -- --fix",
+    "pack": "pkg . --out-path packed",
+    "prepublishOnly": "npm run build && echo '#!/usr/bin/env node' | cat - lib/cli.js > temp && mv temp lib/cli.js",
+    "test": "npm run lint:fix && npm run testonly:cov",
+    "testonly": "NODE_ENV=test jest",
+    "testonly:cov": "jest --coverage --runInBand --forceExit --no-cache",
+    "testonly:watch": "jest --watch"
   }
 }
