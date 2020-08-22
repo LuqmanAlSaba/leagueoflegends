@@ -65,7 +65,7 @@ function getDate(match, currentDate, i) {
             dateStr = "Yesterday, " + yesterday.toLocaleString("en-US", shortDate);
         } else if (tomorrow.toLocaleString("en-US", DATE) === match.date) {
             dateStr = "Tomorrow, " + tomorrow.toLocaleString("en-US", shortDate);
-        } else if (currentDate !== match.date) {
+        } else {
             dateStr = match.date;
         }
     }
