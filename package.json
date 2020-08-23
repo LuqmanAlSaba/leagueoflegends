@@ -65,7 +65,7 @@
     "lec",
     "lck",
     "lpl",
-    "lcs-academy"
+    "lcs academy"
   ],
   "engines": {
     "node": ">=6.0.0"
