@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/LukeAlSaba/leagueoflegends/compare/v3.4.4...HEAD)
 
-## [3.4.4](https://github.com/olivierlacan/keep-a-changelog/compare/v3.4.4...v3.4.4) - 2020-08-23
+## [3.4.4](https://github.com/LukeAlSaba/leagueoflegends/compare/v3.4.4...v3.4.4) - 2020-08-23
 
 ### Changed
 
