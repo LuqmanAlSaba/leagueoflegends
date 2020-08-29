@@ -63,7 +63,7 @@ $ leagueoflegends matches --lcs
 ```
 
 <a href="https://www.npmjs.com/package/leagueoflegends" target="_blank" rel="noopener">
-  <img width="400" alt="leagueoflegends matches (example)" src="https://user-images.githubusercontent.com/22821657/87068872-3ab70a80-c1e4-11ea-909d-be0001ee2fbb.png">
+<img width="598" alt="leagueoflegends matches (example)" src="https://user-images.githubusercontent.com/22821657/91642948-55944700-e9fd-11ea-8533-83135a145eb0.png">
 </a>
 
 ## Standings
@@ -76,7 +76,7 @@ Get the current standings for any of the 5 premier LoL leagues.
 $ leagueoflegends standings --lcs
 ```
 <a href="https://www.npmjs.com/package/leagueoflegends" target="_blank" rel="noopener">
-<img width="400" alt="leagueoflegends standings (example)" src="https://user-images.githubusercontent.com/22821657/87068901-49052680-c1e4-11ea-97fb-33a86dd71731.png">
+<img width="430" alt="leagueoflegends standings (example)" src="https://user-images.githubusercontent.com/70277327/91379947-c5ce7d00-e7f1-11ea-909a-260b7e195761.png">
 </a>
 
 ### Inspired by:
