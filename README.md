@@ -62,9 +62,11 @@ Get a list of this weeks matches for any of the 5 premier LoL leagues.
 $ leagueoflegends matches --lcs
 ```
 
+<p align="center">
 <a href="https://www.npmjs.com/package/leagueoflegends" target="_blank" rel="noopener">
 <img width="598" alt="leagueoflegends matches (example)" src="https://user-images.githubusercontent.com/22821657/91642948-55944700-e9fd-11ea-8533-83135a145eb0.png">
 </a>
+</p>
 
 ## Standings
 
@@ -75,9 +77,11 @@ Get the current standings for any of the 5 premier LoL leagues.
 ```
 $ leagueoflegends standings --lcs
 ```
+<p align="center">
 <a href="https://www.npmjs.com/package/leagueoflegends" target="_blank" rel="noopener">
 <img width="430" alt="leagueoflegends standings (example)" src="https://user-images.githubusercontent.com/70277327/91379947-c5ce7d00-e7f1-11ea-909a-260b7e195761.png">
 </a>
+</p>
 
 ### Inspired by:
 
