@@ -59,7 +59,7 @@ Get a list of this weeks matches for any of the 5 premier LoL leagues.
 </p>
 
 ```
-$ leagueoflegends matches --lcs
+$ leagueoflegends matches --lec
 ```
 
 <p align="center">
@@ -75,7 +75,7 @@ Get the current standings for any of the 5 premier LoL leagues.
 </p>
 
 ```
-$ leagueoflegends standings --lcs
+$ leagueoflegends standings --lec
 ```
 <p align="center">
 <a href="https://www.npmjs.com/package/leagueoflegends" target="_blank" rel="noopener">
