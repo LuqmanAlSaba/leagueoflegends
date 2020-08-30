@@ -32,9 +32,14 @@ module.exports = {
         const data = json.standings;
 
         if (data.length > 0) {
-          console.log("\n" + chalk.hex('#fff').bgHex('#1e1e1e')(
-              `${left(center("", TEAM_RANK_W) + center("TEAM"), TOTAL)} ${center('RECORD', RECORD_WIDTH)}`
-          ) + "\n");
+          console.log(
+            `\n${chalk.hex('#fff').bgHex('#1e1e1e')(
+              `${left(
+                center('', TEAM_RANK_W) + center('TEAM'),
+                TOTAL
+              )} ${center('RECORD', RECORD_WIDTH)}`
+            )}\n`
+          );
           chalk.hex('#4290a2');
           for (let i = 0; i < data.length; i += 1) {
             const team = {
