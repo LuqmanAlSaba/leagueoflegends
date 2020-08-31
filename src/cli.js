@@ -1,10 +1,13 @@
 const program = require('commander');
 const chalk = require('chalk');
+const updateNotifier = require('update-notifier');
 const pkg = require('../package.json');
 const commands = [
   require('./commands/matches'),
   require('./commands/standings'),
 ];
+
+updateNotifier({ pkg }).notify();
 
 program
   .command('matches')
