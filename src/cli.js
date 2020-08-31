@@ -10,6 +10,7 @@ program
   .command('matches')
   .alias('m')
   .usage('(options)')
+  .option('-w, --worlds', 'Show this weeks Worlds schedule')
   .option('-n, --lcs', 'Show this weeks LCS schedule')
   .option('-e, --lec', 'Show this weeks LEC schedule')
   .option('-k, --lck', 'Show this weeks LCK schedule')
@@ -26,7 +27,9 @@ program
     );
   })
   .action(cmd => {
-    if (cmd.lcs) {
+    if (cmd.worlds) {
+      commands[0].matches('worlds');
+    } else if (cmd.lcs) {
       commands[0].matches('lcs');
     } else if (cmd.lec) {
       commands[0].matches('lec');
@@ -38,7 +41,7 @@ program
       commands[0].matches('lcs-academy');
     } else {
       console.log(
-        '\nError: Please choose a league, by using one of these options (--na | --eu | --lck | --lpl | lms).\n'
+        '\nError: Please choose a league, by using one of these options (--worlds | --lcs | --lec | --lck | --lpl | --lcsacademy).\n'
       );
     }
   });
@@ -47,6 +50,7 @@ program
   .command('standings')
   .alias('s')
   .usage('(options)')
+  .option('-w, --worlds', 'Show this weeks Worlds standings')
   .option('-n, --lcs', 'Show this weeks LCS standings')
   .option('-e, --lec', 'Show this weeks LEC standings')
   .option('-k, --lck', 'Show this weeks LCK standings')
@@ -63,7 +67,9 @@ program
     );
   })
   .action(cmd => {
-    if (cmd.lcs) {
+    if (cmd.worlds) {
+      commands[1].standings('worlds');
+    } else if (cmd.lcs) {
       commands[1].standings('lcs');
     } else if (cmd.lec) {
       commands[1].standings('lec');
@@ -75,7 +81,7 @@ program
       commands[1].standings('lcs-academy');
     } else {
       console.log(
-        '\nError: Please choose a league, by using one of these options (--na | --eu | --lck | --lpl | lms).\n'
+        '\nError: Please choose a league, by using one of these options (--worlds | --lcs | --lec | --lck | --lpl | --lcsacademy).\n'
       );
     }
   });

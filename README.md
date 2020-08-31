@@ -40,7 +40,8 @@ $ npm install -g leagueoflegends
   - [`standings` or `s`](#game)
   
 #### Options
-
+  - League of Legends World Championship (Worlds)  
+    - `--worlds` or `-w`
   - LoL Championship Series (LCS)  
     - `--lcs` or `-n`
   - LoL European Championship (LEC)

@@ -29,9 +29,9 @@ module.exports = {
       .then(json => {
         spinner.stop();
 
-        const data = json.standings;
+        const { standings } = json;
 
-        if (data.length > 0) {
+        if (standings.length > 0) {
           console.log(
             `\n${chalk.hex('#fff').bgHex('#1e1e1e')(
               `${left(
@@ -41,17 +41,18 @@ module.exports = {
             )}\n`
           );
           chalk.hex('#4290a2');
-          for (let i = 0; i < data.length; i += 1) {
+          for (let i = 0; i < standings.length; i += 1) {
             const team = {
               name:
-                data[i].name.length >= 20 || league === 'lcs-academy'
-                  ? data[i].abbreviatedName
-                  : data[i].name,
-              color: data[i].color,
-              rank: data[i].ranking,
-              record: data[i].record,
+                standings[i].name.length >= 20 || league === 'lcs-academy'
+                  ? standings[i].abbreviatedName
+                  : standings[i].name,
+              color: standings[i].hasOwnProperty('color')
+                ? standings[i].color
+                : '#a0a0a0',
+              rank: standings[i].ranking,
+              record: standings[i].record,
             };
-
             console.log(
               `${getStandings(
                 left(

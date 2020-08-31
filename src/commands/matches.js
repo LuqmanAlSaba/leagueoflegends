@@ -18,7 +18,7 @@ const getMatch = (league, match) => {
     .hex('#eeeeee')
     .bold.bgHex('#666666')
     .inverse(center(`${match.team1.score}  vs  ${match.team2.score}`, 12));
-  // let statusText = chalk.hex("#eeeeee").bold.bgHex("#666666").inverse("    " + result1 + " - " + result2 + "    ");
+
   const team1Name =
     match.team1.name.length >= 20 || league === 'lcs-academy'
       ? match.team1.abbreviatedName
@@ -27,11 +27,19 @@ const getMatch = (league, match) => {
     match.team2.name.length >= 20 || league === 'lcs-academy'
       ? match.team2.abbreviatedName
       : match.team2.name;
+
+  const team1Color = match.team1.hasOwnProperty('color')
+    ? match.team1.color
+    : '#a0a0a0';
+  const team2Color = match.team2.hasOwnProperty('color')
+    ? match.team2.color
+    : '#a0a0a0';
+
   let team1 = chalk
-    .bgHex(match.team1.color)
+    .bgHex(team1Color)
     .whiteBright.bold(center(team1Name, team1Name.length + 2));
   let team2 = chalk
-    .bgHex(match.team2.color)
+    .bgHex(team2Color)
     .whiteBright.bold(center(team2Name, team2Name.length + 2));
 
   if (match.status === 'NOT STARTED') {
