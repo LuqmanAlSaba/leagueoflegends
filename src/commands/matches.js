@@ -9,82 +9,49 @@ const NUM_DAY = { day: 'numeric' };
 const DAY = { weekday: 'long' };
 const TIME = { hour: '2-digit', minute: '2-digit' };
 
-const TEAM_WIDTH = 23;
-const STATUS_WIDTH = 22;
+const TEAM_WIDTH = 22;
+const STATUS_WIDTH = 20;
 const TABLE_WIDTH = TEAM_WIDTH + STATUS_WIDTH + TEAM_WIDTH;
-chalk.hex('#eeeeee').bold.bgHex('#666666');
-const getMatch = (league, match) => {
-  let statusText = chalk
-    .hex('#eeeeee')
-    .bold.bgHex('#666666')
-    .inverse(center(`${match.team1.score}  vs  ${match.team2.score}`, 12));
 
-  const team1Name =
-    match.team1.name.length >= 20 || league === 'lcs-academy'
-      ? match.team1.abbreviatedName
-      : match.team1.name;
-  const team2Name =
-    match.team2.name.length >= 20 || league === 'lcs-academy'
-      ? match.team2.abbreviatedName
-      : match.team2.name;
+const formatStatus = (textColor, bgColor, text) =>
+  chalk.bold.hex(textColor).bgHex(bgColor)(center(text, 12));
 
-  const team1Color = match.team1.hasOwnProperty('color')
-    ? match.team1.color
-    : '#a0a0a0';
-  const team2Color = match.team2.hasOwnProperty('color')
-    ? match.team2.color
-    : '#a0a0a0';
-
-  let team1 = chalk
-    .bgHex(team1Color)
-    .whiteBright.bold(center(team1Name, team1Name.length + 2));
-  let team2 = chalk
-    .bgHex(team2Color)
-    .whiteBright.bold(center(team2Name, team2Name.length + 2));
-
-  if (match.status === 'NOT STARTED') {
-    statusText = chalk
-      .hex('#eeeeee')
-      .bold.bgHex('#666666')
-      .inverse(`  ${right(match.time, 8)}  `);
-  } else if (match.status === 'LIVE') {
-    statusText = chalk.hex('#fff')(
-      chalk.bgHex('#e50e47').bold(center('LIVE', 12))
-    );
-  } else if (match.status === 'CONCLUDED') {
-    const star = chalk.hex('#ffd45a')(' ⭑ ');
-    team1 = match.team1.score > match.team2.score ? star + team1 : team1;
-    team2 = match.team1.score < match.team2.score ? team2 + star : team2;
-  }
-
-  return `${right(team1, TEAM_WIDTH) +
-    center(statusText, STATUS_WIDTH) +
-    left(team2, TEAM_WIDTH)}\n`;
+const formatTeam = (team, league) => {
+  const useAbbreviatedName = team.name.length >= 21 || league === 'lcs-academy';
+  const teamName = useAbbreviatedName ? team.abbreviatedName : team.name;
+  const bgColor = team.hasOwnProperty('color') ? team.color : '#a0a0a0';
+  return chalk.bold.whiteBright.bgHex(bgColor)(` ${teamName} `);
 };
 
-function getDateSuffix(d) {
-  if (d > 3 && d < 21) return 'th';
-  switch (d % 10) {
-    case 1:
-      return 'st';
-    case 2:
-      return 'nd';
-    case 3:
-      return 'rd';
-    default:
-      return 'th';
+const getMatch = (league, match) => {
+  const { team1, team2 } = match;
+  const scoreStr = `${team1.score}  vs  ${team2.score}`;
+  let statusText = formatStatus('#E4E4E4', '#626262', scoreStr);
+
+  let team1Str = right(formatTeam(team1, league), TEAM_WIDTH);
+  let team2Str = left(formatTeam(team2, league), TEAM_WIDTH);
+
+  if (match.status === 'NOT STARTED') {
+    const time = match.time.length === 7 ? `0${match.time}` : match.time;
+    statusText = formatStatus('#626262', '#fff', time);
+  } else if (match.status === 'LIVE') {
+    statusText = formatStatus('#fff', '#e50e47', 'LIVE');
+  } else if (match.status === 'CONCLUDED') {
+    team1Str = team1.score > team2.score ? chalk.underline(team2Str) : team1Str;
+    team2Str = team1.score < team2.score ? chalk.underline(team2Str) : team2Str;
   }
-}
+
+  return `${team1Str + center(statusText, STATUS_WIDTH) + team2Str}\n`;
+};
 
 function getDate(match, currentDate, i) {
   const today = new Date();
   const yesterday = new Date(today);
   const tomorrow = new Date(today);
+  let dateStr = '';
 
   yesterday.setDate(yesterday.getDate() - 1);
   tomorrow.setDate(tomorrow.getDate() + 1);
-
-  let dateStr = '';
 
   if (currentDate !== match.date || i === 0) {
     if (today.toLocaleString('en-US', DATE) === match.date) {
@@ -98,6 +65,20 @@ function getDate(match, currentDate, i) {
     }
   }
   return dateStr;
+}
+
+function getDateSuffix(d) {
+  if (d > 3 && d < 21) return 'th';
+  switch (d % 10) {
+    case 1:
+      return 'st';
+    case 2:
+      return 'nd';
+    case 3:
+      return 'rd';
+    default:
+      return 'th';
+  }
 }
 
 function getMatchResult(match) {
@@ -128,14 +109,13 @@ module.exports = {
         spinner.stop();
         if (schedule.length > 0) {
           console.log(`\n${center(league.toUpperCase(), TABLE_WIDTH)}\n`);
-
           let currentDate = new Date(schedule[0].matchID).toLocaleString(
             'en-US',
             DATE
           );
+
           for (let i = 0; i < schedule.length; i += 1) {
             const matchStartDate = schedule[i].matchID;
-
             const match = {
               status: schedule[i].status,
               date: new Date(matchStartDate).toLocaleString('en-US', DATE),
@@ -145,15 +125,13 @@ module.exports = {
               team1: schedule[i].team1,
               team2: schedule[i].team2,
             };
-
-            const dateTitle = getDate(match, currentDate, i);
+            const dateTitle = center(
+              getDate(match, currentDate, i),
+              TABLE_WIDTH
+            );
 
             if (dateTitle !== '') {
-              console.log(
-                `${chalk.hex('#fff').bgHex('#1e1e1e')(
-                  center(dateTitle, TABLE_WIDTH)
-                )}\n`
-              );
+              console.log(`${chalk.hex('#fff').bgHex('#1e1e1e')(dateTitle)}\n`);
             }
 
             currentDate = match.date;
