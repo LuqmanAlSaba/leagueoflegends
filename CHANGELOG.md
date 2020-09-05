@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Require Node.js 10
+- Update ora to latest version
 - Rename Changelog.md to CHANGELOG.md
 - Add an unreleased section to CHANGELOG.md
 - Change example images in README.md
