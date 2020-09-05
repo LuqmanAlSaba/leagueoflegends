@@ -69,7 +69,7 @@
     "lpl"
   ],
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=10.0.0"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -98,9 +98,9 @@
       "lib/*.js"
     ],
     "targets": [
-      "node8-macos",
-      "node8-linux",
-      "node8-win"
+      "node10-macos",
+      "node10-linux",
+      "node10-win"
     ]
   },
   "directories": {

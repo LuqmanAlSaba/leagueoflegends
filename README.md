@@ -7,9 +7,9 @@
 <p align=center>
 <a target="_blank" href="https://travis-ci.com/LukeAlSaba/leagueoflegends" title="Build Status"><img src="https://travis-ci.com/LukeAlSaba/leagueoflegends.svg?branch=master"></a>
 <a target="_blank" href="https://snyk.io/test/github/LukeAlSaba/leagueoflegends?targetFile=package.json"><img src="https://snyk.io/test/github/LukeAlSaba/leagueoflegends/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/LukeAlSaba/leagueoflegends?targetFile=package.json" style="max-width:100%;"></a>
+<a target="_blank" href="http://nodejs.org/download/" title="Node version"><img src="https://img.shields.io/badge/node.js-%3E=_10.0-passing.svg"></a>
 <a target="_blank" href="https://npmjs.org/package/leagueoflegends" title="NPM version"><img src="https://img.shields.io/npm/v/leagueoflegends.svg"></a>
 <a target="_blank" href="https://opensource.org/licenses/MIT" title="License: MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
-<a target="_blank" href="http://nodejs.org/download/" title="Node version"><img src="https://img.shields.io/badge/node.js-%3E=_6.0-green.svg"></a>
 <a target="_blank" href="https://packagephobia.com/result?p=leagueoflegends" title="Install Size"><img src="https://packagephobia.com/badge?p=leagueoflegends@3.4.2"></a>
 <a target="_blank" href="https://github.com/prettier/prettier" title="Install Size"><img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square"></a>
 </p>
