@@ -39,7 +39,7 @@ function getDiffColor(diff) {
 module.exports = {
   standings(league) {
     const spinner = ora('Loading standings').start();
-    const url = `https://lolesports.s3.us-east-2.amazonaws.com/${league}/standings`;
+    const url = `http://lolesports.s3-accelerate.amazonaws.com/${league}/standings`;
     fetch(url)
       .then(res => res.json())
       .then(json => {
