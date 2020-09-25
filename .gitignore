@@ -1,3 +1,4 @@
 # Project exclude paths
 /lib/
 /node_modules/
+package-lock.json
