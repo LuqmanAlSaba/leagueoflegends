@@ -7,16 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/LukeAlSaba/leagueoflegends/compare/v3.4.4...HEAD)
 
-## [3.4.5](https://github.com/LukeAlSaba/leagueoflegends/compare/v3.4.4...v3.4.4) - 2020-00-00
+## [3.4.5](https://github.com/LukeAlSaba/leagueoflegends/compare/v3.4.5...v3.4.5) - 2020-00-00
 ### Added
 
 - Add support for the League of Legends World Championship
 - Add update notifications
+- Add new test cases for getDate function
 
 ### Changed
 
 - Require Node.js 10
-- Update ora to latest version
+- Update all packages
 - Rename Changelog.md to CHANGELOG.md
 - Add an unreleased section to CHANGELOG.md
 - Change example images in README.md
