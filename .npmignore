@@ -10,4 +10,5 @@ webpack.config.js
 .idea
 .DS_Store
 .travis.yml
+package-lock.json
 Changelog.md
