@@ -13,8 +13,12 @@ const TEAM_WIDTH = 22;
 const STATUS_WIDTH = 20;
 const TABLE_WIDTH = TEAM_WIDTH + STATUS_WIDTH + TEAM_WIDTH;
 
-const formatStatus = (textColor, bgColor, text) =>
-  chalk.bold.hex(textColor).bgHex(bgColor)(center(text, 12));
+const formatStatus = (textColor, bgColor, text) => {
+  if (text.length === 7) {
+    return chalk.bold.hex(textColor).bgHex(bgColor)(right(`${text}  `, 12));
+  }
+  return chalk.bold.hex(textColor).bgHex(bgColor)(center(text, 12));
+};
 
 const formatTeam = (team, league) => {
   const useAbbreviatedName = team.name.length >= 21 || league === 'lcs-academy';
@@ -26,25 +30,27 @@ const formatTeam = (team, league) => {
 const getMatch = (league, match) => {
   const { team1, team2 } = match;
   const scoreStr = `${team1.score}  vs  ${team2.score}`;
-  let statusText = formatStatus('#E4E4E4', '#626262', scoreStr);
+  let statusText = formatStatus('#5a5a5a', '#fff', scoreStr);
 
-  let team1Str = right(formatTeam(team1, league), TEAM_WIDTH);
-  let team2Str = left(formatTeam(team2, league), TEAM_WIDTH);
+  let team1Str = formatTeam(team1, league);
+  let team2Str = formatTeam(team2, league);
 
   if (match.status === 'NOT STARTED') {
-    const time = match.time.length === 7 ? `0${match.time}` : match.time;
-    statusText = formatStatus('#626262', '#fff', time);
+    statusText = formatStatus('#5a5a5a', '#fff', match.time);
   } else if (match.status === 'LIVE') {
     statusText = formatStatus('#fff', '#e50e47', 'LIVE');
   } else if (match.status === 'CONCLUDED') {
-    team1Str = team1.score > team2.score ? chalk.underline(team2Str) : team1Str;
+    team1Str = team1.score > team2.score ? chalk.underline(team1Str) : team1Str;
     team2Str = team1.score < team2.score ? chalk.underline(team2Str) : team2Str;
   }
+
+  team1Str = right(team1Str, TEAM_WIDTH);
+  team2Str = left(team2Str, TEAM_WIDTH);
 
   return `${team1Str + center(statusText, STATUS_WIDTH) + team2Str}\n`;
 };
 
-function getDate(match, currentDate, i) {
+function getDate(match, currentDateHeader, i) {
   const today = new Date();
   const yesterday = new Date(today);
   const tomorrow = new Date(today);
@@ -53,7 +59,7 @@ function getDate(match, currentDate, i) {
   yesterday.setDate(yesterday.getDate() - 1);
   tomorrow.setDate(tomorrow.getDate() + 1);
 
-  if (currentDate !== match.date || i === 0) {
+  if (currentDateHeader !== match.date || i === 0) {
     if (today.toLocaleString('en-US', DATE) === match.date) {
       dateStr = `Today, ${today.toLocaleString('en-US', shortDate)}`;
     } else if (yesterday.toLocaleString('en-US', DATE) === match.date) {
@@ -96,7 +102,7 @@ function getMatchResult(match) {
 module.exports = {
   matches(league) {
     const spinner = ora('Loading matches').start();
-    const url = `https://lolesports.s3.us-east-2.amazonaws.com/${league}/schedule`;
+    const url = `http://lolesports.s3-accelerate.amazonaws.com/${league}/schedule`;
 
     fetch(url)
       .catch(() => {
@@ -109,7 +115,7 @@ module.exports = {
         spinner.stop();
         if (schedule.length > 0) {
           console.log(`\n${center(league.toUpperCase(), TABLE_WIDTH)}\n`);
-          let currentDate = new Date(schedule[0].matchID).toLocaleString(
+          let currentDateHeader = new Date(schedule[0].matchID).toLocaleString(
             'en-US',
             DATE
           );
@@ -125,16 +131,17 @@ module.exports = {
               team1: schedule[i].team1,
               team2: schedule[i].team2,
             };
-            const dateTitle = center(
-              getDate(match, currentDate, i),
-              TABLE_WIDTH
-            );
+            const dateTitle = getDate(match, currentDateHeader, i);
 
             if (dateTitle !== '') {
-              console.log(`${chalk.hex('#fff').bgHex('#1e1e1e')(dateTitle)}\n`);
+              console.log(
+                `${chalk.hex('#fff').bgHex('#1e1e1e')(
+                  center(dateTitle, TABLE_WIDTH)
+                )}\n`
+              );
             }
 
-            currentDate = match.date;
+            currentDateHeader = match.date;
             console.log(getMatch(league, match));
           }
         } else {
@@ -144,6 +151,7 @@ module.exports = {
         }
       });
   },
+  getDate,
   getDateSuffix,
   getMatchResult,
 };
