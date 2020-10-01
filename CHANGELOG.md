@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/LukeAlSaba/leagueoflegends/compare/v3.4.4...HEAD)
 
-## [4.0.0](https://github.com/LukeAlSaba/leagueoflegends/compare/v4.0.0...v4.0.0) - 2020-00-00
+## [4.0.0](https://github.com/LukeAlSaba/leagueoflegends/compare/v4.0.0...v4.0.0) - 2020-10-01
 ### Added
 
 - Add support for the League of Legends World Championship
