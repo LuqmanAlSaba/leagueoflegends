@@ -22,6 +22,9 @@ This CLI tool is for those who are both LoL fans and Software Engineers.
 All data comes from the <a href="https://watch.lolesports.com/" target="_blank" rel="noopener">LoL Esports</a> website.
 </p>
 
+## Disclaimer
+This product is not endorsed, certified or otherwise approved in any way by Riot Games, Inc. or any of its affiliates.
+
 ## Install
 
 <p>
