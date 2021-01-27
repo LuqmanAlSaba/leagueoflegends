@@ -9,6 +9,7 @@ const commands = [
 
 updateNotifier({ pkg }).notify();
 
+// TODO: Add option to hide spoilers
 program.name('leagueoflegends').usage('[command] [options]');
 
 program
@@ -31,7 +32,7 @@ program
       `  Visit the GitHub page for more detailed information: ${chalk`{hex('#218ffe') https://github.com/LukeAlSaba/LeagueofLegends}`}\n`
     );
   })
-  .action(cmd => {
+  .action((cmd) => {
     if (cmd.worlds) {
       commands[0].matches('worlds');
     } else if (cmd.lcs) {
@@ -71,7 +72,7 @@ program
       `  Visit the GitHub page for more detailed information: ${chalk`{hex('#218ffe') https://github.com/LukeAlSaba/leagueoflegends}`}\n`
     );
   })
-  .action(cmd => {
+  .action((cmd) => {
     if (cmd.worlds) {
       commands[1].standings('worlds');
     } else if (cmd.lcs) {
@@ -106,7 +107,7 @@ program.on('--help', () => {
   );
 });
 
-program.command('*').action(command => {
+program.command('*').action((command) => {
   console.log(`\n  error: unknown command \`${command}'\n`);
   process.exit(1);
 });
