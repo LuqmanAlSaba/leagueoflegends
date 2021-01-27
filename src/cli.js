@@ -7,7 +7,20 @@ const commands = [
   require('./commands/standings'),
 ];
 
+const params = require('./params.json')
 updateNotifier({ pkg }).notify();
+
+function runCommand(commandIndex, cmd, execution) {
+  for (const command of params) {
+    const key = Object.keys(command)[0]
+    const value = Object.values(command)[0]
+    if (cmd[key]) {
+      commands[commandIndex][execution](value)
+      return true
+    }
+  }
+  return false
+}
 
 // TODO: Add option to hide spoilers
 program.name('leagueoflegends').usage('[command] [options]');
@@ -32,24 +45,12 @@ program
       `  Visit the GitHub page for more detailed information: ${chalk`{hex('#218ffe') https://github.com/LukeAlSaba/LeagueofLegends}`}\n`
     );
   })
-  .action((cmd) => {
-    if (cmd.worlds) {
-      commands[0].matches('worlds');
-    } else if (cmd.lcs) {
-      commands[0].matches('lcs');
-    } else if (cmd.lec) {
-      commands[0].matches('lec');
-    } else if (cmd.lck) {
-      commands[0].matches('lck');
-    } else if (cmd.lpl) {
-      commands[0].matches('lpl');
-    } else if (cmd.lcsacademy) {
-      commands[0].matches('lcs-academy');
-    } else {
-      console.log(
-        '\nError: Please choose a league, by using one of these options (--worlds | --lcs | --lec | --lck | --lpl | --lcsacademy).\n'
-      );
-    }
+  .action(cmd => {
+    if (runCommand(0, cmd, "matches"))
+      return
+    console.log(
+      '\nError: Please choose a league, by using one of these options (--worlds | --lcs | --lec | --lck | --lpl | --lcsacademy).\n'
+    );
   });
 
 program
@@ -72,24 +73,12 @@ program
       `  Visit the GitHub page for more detailed information: ${chalk`{hex('#218ffe') https://github.com/LukeAlSaba/leagueoflegends}`}\n`
     );
   })
-  .action((cmd) => {
-    if (cmd.worlds) {
-      commands[1].standings('worlds');
-    } else if (cmd.lcs) {
-      commands[1].standings('lcs');
-    } else if (cmd.lec) {
-      commands[1].standings('lec');
-    } else if (cmd.lck) {
-      commands[1].standings('lck');
-    } else if (cmd.lpl) {
-      commands[1].standings('lpl');
-    } else if (cmd.lcsacademy) {
-      commands[1].standings('lcs-academy');
-    } else {
-      console.log(
-        '\nError: Please choose a league, by using one of these options (--worlds | --lcs | --lec | --lck | --lpl | --lcsacademy).\n'
-      );
-    }
+  .action(cmd => {
+    if (runCommand(1, cmd, "standings"))
+      return
+    console.log(
+      '\nError: Please choose a league, by using one of these options (--worlds | --lcs | --lec | --lck | --lpl | --lcsacademy).\n'
+    );
   });
 
 program.on('--help', () => {
