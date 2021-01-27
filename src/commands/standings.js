@@ -9,7 +9,7 @@ const RECORD_WIDTH = 14;
 const TOTAL_TEAM_WIDTH = TEAM_WIDTH + TEAM_RANK_W;
 const TOTAL = TEAM_WIDTH + TEAM_RANK_W + RECORD_WIDTH;
 
-const getStandings = team => {
+const getStandings = (team) => {
   const teamRank = center(chalk.bold(`${team.rank}`), TEAM_RANK_W);
   const teamName = chalk.bold.whiteBright.bgHex(team.color)(` ${team.name} `);
   const teamStr = left(teamRank + teamName, TOTAL_TEAM_WIDTH);
@@ -41,8 +41,12 @@ module.exports = {
     const spinner = ora('Loading standings').start();
     const url = `http://lolesports.s3-accelerate.amazonaws.com/${league}/standings`;
     fetch(url)
-      .then(res => res.json())
-      .then(json => {
+      .catch(() => {
+        console.error('\nHost is inaccessible -- are you offline?');
+        process.exit(1);
+      })
+      .then((res) => res.json())
+      .then((json) => {
         spinner.stop();
 
         const { standings } = json;

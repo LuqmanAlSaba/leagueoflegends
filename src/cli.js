@@ -10,6 +10,19 @@ const commands = [
 const params = require('./params.json')
 updateNotifier({ pkg }).notify();
 
+function runCommand(commandIndex, cmd, execution) {
+  for (const command of params) {
+    const key = Object.keys(command)[0]
+    const value = Object.values(command)[0]
+    if (cmd[key]) {
+      commands[commandIndex][execution](value)
+      return true
+    }
+  }
+  return false
+}
+
+// TODO: Add option to hide spoilers
 program.name('leagueoflegends').usage('[command] [options]');
 
 program
@@ -38,7 +51,6 @@ program
     console.log(
       '\nError: Please choose a league, by using one of these options (--worlds | --lcs | --lec | --lck | --lpl | --lcsacademy).\n'
     );
-
   });
 
 program
@@ -67,7 +79,6 @@ program
     console.log(
       '\nError: Please choose a league, by using one of these options (--worlds | --lcs | --lec | --lck | --lpl | --lcsacademy).\n'
     );
-
   });
 
 program.on('--help', () => {
@@ -85,7 +96,7 @@ program.on('--help', () => {
   );
 });
 
-program.command('*').action(command => {
+program.command('*').action((command) => {
   console.log(`\n  error: unknown command \`${command}'\n`);
   process.exit(1);
 });
@@ -93,15 +104,3 @@ program.command('*').action(command => {
 program.version(pkg.version, '-v, --version');
 
 program.parse(process.argv);
-
-function runCommand(commandIndex, cmd, execution) {
-  for (const command of params) {
-    const key = Object.keys(command)[0]
-    const value = Object.values(command)[0]
-    if (cmd[key]) {
-      commands[commandIndex][execution](value)
-      return true
-    }
-  }
-  return false
-}
