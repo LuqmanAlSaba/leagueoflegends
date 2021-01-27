@@ -7,20 +7,21 @@ const commands = [
   require('./commands/standings'),
 ];
 
-const params = require('./params.json')
+const params = require('./params.json');
+
 updateNotifier({ pkg }).notify();
 
 function runCommand(commandIndex, cmd, execution) {
   // eslint-disable-next-line no-restricted-syntax
   for (const command of params) {
-    const key = Object.keys(command)[0]
-    const value = Object.values(command)[0]
+    const key = Object.keys(command)[0];
+    const value = Object.values(command)[0];
     if (cmd[key]) {
-      commands[commandIndex][execution](value)
-      return true
+      commands[commandIndex][execution](value);
+      return true;
     }
   }
-  return false
+  return false;
 }
 
 // TODO: Add option to hide spoilers
@@ -46,9 +47,8 @@ program
       `  Visit the GitHub page for more detailed information: ${chalk`{hex('#218ffe') https://github.com/LukeAlSaba/LeagueofLegends}`}\n`
     );
   })
-  .action(cmd => {
-    if (runCommand(0, cmd, "matches"))
-      return
+  .action((cmd) => {
+    if (runCommand(0, cmd, 'matches')) return;
     console.log(
       '\nError: Please choose a league, by using one of these options (--worlds | --lcs | --lec | --lck | --lpl | --lcsacademy).\n'
     );
@@ -74,9 +74,8 @@ program
       `  Visit the GitHub page for more detailed information: ${chalk`{hex('#218ffe') https://github.com/LukeAlSaba/leagueoflegends}`}\n`
     );
   })
-  .action(cmd => {
-    if (runCommand(1, cmd, "standings"))
-      return
+  .action((cmd) => {
+    if (runCommand(1, cmd, 'standings')) return;
     console.log(
       '\nError: Please choose a league, by using one of these options (--worlds | --lcs | --lec | --lck | --lpl | --lcsacademy).\n'
     );
