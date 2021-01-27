@@ -11,6 +11,7 @@ const params = require('./params.json')
 updateNotifier({ pkg }).notify();
 
 function runCommand(commandIndex, cmd, execution) {
+  // eslint-disable-next-line no-restricted-syntax
   for (const command of params) {
     const key = Object.keys(command)[0]
     const value = Object.values(command)[0]
